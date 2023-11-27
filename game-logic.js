@@ -12,3 +12,19 @@
 //          if paper/scissor: user wins, +1 counter
 //          if rock/scissor: comp wins, +1 counter
 //          if scissor/rock: user wins, +1 counter
+
+let gameCounter = 0;
+const gameChoices = ["Rock", "Paper", "Scissors"];
+
+// Gets random choice from gameChoices array
+function getComputerChoice(){
+    return (gameChoices[Math.floor(Math.random() * 4)])
+}
+
+if (gameCounter > 5){
+    console.log("GAME OVER");
+}
+
+else{
+    //Game logic-function goes here
+}
