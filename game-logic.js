@@ -21,6 +21,13 @@ function getComputerChoice(){
     return (gameChoices[Math.floor(Math.random() * 4)])
 }
 
+function singleRound (computerSelection, playerSelection){
+    //One round
+    //Don't forget to increment counter
+}
+
+
+
 if (gameCounter > 5){
     console.log("GAME OVER");
 }
