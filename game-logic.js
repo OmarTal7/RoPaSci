@@ -14,7 +14,7 @@
 //          if scissor/rock: user wins, +1 counter
 
 let gameCounter = 0;
-const gameChoices = ["Rock", "Paper", "Scissors"];
+const gameChoices = ["rock", "paper", "scissors"];
 
 // Gets random choice from gameChoices array
 function getComputerChoice(){
@@ -22,16 +22,16 @@ function getComputerChoice(){
 }
 
 function singleRound (computerSelection, playerSelection){
-    //One round
+    let player = prompt("Rock..Paper..Scissors.. SHOOT!");
+    
+    while(!gameChoices.includes(player.toLocaleLowerCase())){
+        
+    }    
+    
+    
     //Don't forget to increment counter
 }
 
 
 
-if (gameCounter > 5){
-    console.log("GAME OVER");
-}
-
-else{
-    //Game logic-function goes here
-}
+(gameCounter > 5) ? console.log("GAME OVER") : singleRound()
