@@ -1,7 +1,9 @@
 const buttons = document.querySelector('.user-Choice-Buttons');
 const results = document.querySelector('#results');
+const score = document.querySelector('#score');
 let playerChoice = '';
-
+let playerScore = 0;
+let computerScore = 0;
 
 buttons.addEventListener('click', (e) => {
         
@@ -12,18 +14,24 @@ buttons.addEventListener('click', (e) => {
             console.log('rock was clicked');
             playerChoice = "rock";
             game();
+            updateScores()
+            checkGameEnd();
             break;
         
         case 'paper':
             console.log('paper was clicked');
             playerChoice = "paper";
             game();
+            updateScores()
+            checkGameEnd();
             break;
         
         case 'scissors':
             console.log('scissors was clicked');
             playerChoice = "scissors";
             game();
+            updateScores()
+            checkGameEnd();
             break;
     }
 
@@ -31,6 +39,19 @@ buttons.addEventListener('click', (e) => {
 
 
 //Functions below
+
+function updateScores(){
+    score.textContent = `Player: ${playerScore}, Computer: ${computerScore}`;
+};
+
+
+function checkGameEnd(){
+    if ((playerScore == 5) || (computerScore == 5)){
+        const allButtons = document.querySelectorAll('button');
+        allButtons.forEach((button) => {button.disabled = true;}); 
+        alert("GAME OVER");
+    }
+};
 
 function getComputerChoice(){
     const gameChoices = ["rock", "paper", "scissors"];
@@ -55,16 +76,20 @@ function game(){
     //Checks the result to determine who won and how to increment the counter
     if (result == 'win'){
         resultMessage = "Great life choices! You win!";
+        playerScore += 1;
         addRoundResult(resultMessage);
    
     } else if (result == 'lose'){
         resultMessage = "Terrible life choices... You lose!";
+        computerScore += 1;
         addRoundResult(resultMessage);
 
     } else {
         resultMessage = "Your life choices got you nowhere new";
         addRoundResult(resultMessage);
     }
+
+    
 }
 
 

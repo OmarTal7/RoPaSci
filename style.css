@@ -11,3 +11,8 @@
 ul{
     list-style: none;
 }
+
+#score{
+    border: 1px solid black;
+    text-align: center;
+}
