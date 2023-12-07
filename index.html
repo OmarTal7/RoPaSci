@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock! Paper! Scissors!</title>
-    <script src="game-logic.js"></script>
+    <script src="game-logic.js" defer></script>
+    <link rel="stylesheet" src="style.css">
 </head>
 <body>
-    
+    <div class="header">Make your choice: </div>
+    <ul class="user-Choice-Buttons">
+        <li><button value="rock">Rock</button></li>
+        <li><button value="paper">Paper</button></li>
+        <li><button value="scissors">Scissors</button></li>
+    </ul>
+
+    <div id="results-header">Results</div>
+    <ul id="results"></ul>
+
 </body>
 </html>

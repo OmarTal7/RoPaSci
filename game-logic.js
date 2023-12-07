@@ -1,14 +1,85 @@
+const buttons = document.querySelector('.user-Choice-Buttons');
+const results = document.querySelector('#results');
+let playerChoice = '';
+
+
+buttons.addEventListener('click', (e) => {
+        
+    let target = e.target;
+
+    switch(target.value){
+        case 'rock':
+            console.log('rock was clicked');
+            playerChoice = "rock";
+            game();
+            break;
+        
+        case 'paper':
+            console.log('paper was clicked');
+            playerChoice = "paper";
+            game();
+            break;
+        
+        case 'scissors':
+            console.log('scissors was clicked');
+            playerChoice = "scissors";
+            game();
+            break;
+    }
+
+});
+
+
+//Functions below
+
+function getComputerChoice(){
+    const gameChoices = ["rock", "paper", "scissors"];
+    let computerChoice = gameChoices[Math.floor(Math.random() * 3)]
+    return computerChoice;
+};
+
+
+
+function addRoundResult(result){
+    const roundItem = document.createElement('li');
+    roundItem.textContent = result;
+    results.appendChild(roundItem);
+}
+
+// Run a full game of RPC
+function game(){
+    
+    let resultMessage = "";
+    let result = singleRound(getComputerChoice(), playerChoice);
+
+    //Checks the result to determine who won and how to increment the counter
+    if (result == 'win'){
+        resultMessage = "Great life choices! You win!";
+        addRoundResult(resultMessage);
+   
+    } else if (result == 'lose'){
+        resultMessage = "Terrible life choices... You lose!";
+        addRoundResult(resultMessage);
+
+    } else {
+        resultMessage = "Your life choices got you nowhere new";
+        addRoundResult(resultMessage);
+    }
+}
+
+
+
 // Given two selections, function determines winner of a RPC round
 function singleRound(computerSelection, playerSelection){
 
     if (computerSelection == playerSelection){
-            return 't';
+            return 'tie';
     } 
     else if ((computerSelection == "rock" && playerSelection == "paper") ||
             (computerSelection == "paper" && playerSelection == "scissors") ||
             (computerSelection == "scissors" && playerSelection == "rock")){
                 
-                return 'w';
+                return 'win';
 
             }
     
@@ -16,54 +87,9 @@ function singleRound(computerSelection, playerSelection){
             (playerSelection == "paper" && computerSelection == "scissors") ||
             (playerSelection == "scissors" && computerSelection == "rock")){
         
-                return `l`;
-
+                return `lose`;
 
     }
-
-
 }
 
-// Run a full game of RPC
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    let gameCounter = 0;
-    const gameChoices = ["rock", "paper", "scissors"];
-    let resultMessage = "";
-
-    while(playerScore < 5 && computerScore < 5){
-        let player = prompt("Rock, paper, scissors,...SHOOT!");
-        
-        // Player doesn't choose one of the options
-        while(!gameChoices.includes(player)){
-            player = prompt("Please choose either Rock, Paper, or Scissors!");
-            if (gameChoices.includes(player)){break;}
-        }
-
-        //Generates random computer choice
-        computer = gameChoices[Math.floor(Math.random() * 3)]
-
-        //Gets result of singleRound with given computer and player choices        
-        let result = singleRound(computer, player);
-
-        //Checks the result to determine who won and how to increment the counter
-        if (result == 'w'){
-            playerScore = playerScore + 1;
-            gameCounter = gameCounter + 1;
-            console.log(`player: ${player}, computer: ${computer}`)
-   
-        } else if (result == 'l'){
-            computerScore = computerScore + 1;
-            gameCounter = gameCounter + 1;
-            console.log(`player: ${player}, computer: ${computer}`)
-
-        } else {console.log('Its a tie!');}
-    }
-
-    //Output final scores
-    return console.log(`player: ${playerScore}, computer: ${computerScore}, games player: ${gameCounter}`); 
-}
-
-game();
 

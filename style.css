@@ -1,0 +1,13 @@
+#results-header{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.user-Choice-Buttons{
+    display: flex;
+    gap: 10px;
+}
+
+ul{
+    list-style: none;
+}
